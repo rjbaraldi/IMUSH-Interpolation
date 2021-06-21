@@ -1,0 +1,48 @@
+TODO
+
+[] opSpot class: move funhandle and matrix props, which are def'd in
+   many (most?!) of the subclasses, into opSpot. (These are used too
+   often.) Then can have opSpot/double.m do a simple check if
+   ~isempty(op.matrix).
+
+[] opBlockDiag.m: Avoid replicating operator explicitly?  How to
+                  display repeated blocks:
+                  opBlockDiag(ones(10,1),opDCT(4))?  make sure help
+                  comment mentions weight vector in combination with a
+                  single operator as well.
+
+[] @opSpot/diag.m; add documentation
+
+[] opInverse.m: Should we allow operators such as opInverse on
+   non-linear operators? NO!!! Check linear flag. LIKEWISE for PCG,
+   LSQR, ...
+
+[] Add inverse implementation for opBlockOp
+[] Clean up multiplication implementations, see e.g., opCurvelet
+[] opWavelet.m: Help comment
+[] opToeplitz.m, opToepGauss.m, opToepSign.m: Help comment
+[] Comments in the @opSpot files
+[] opSurfacelet.m: Haven't got a clue about how to use? Still have to test.
+[] For each operator, check if complexity, linear flag needs to be set or not
+[] opSubsRef.m, opSubsAsgn.m, opExcise.m: Add proper help
+[] Check constructor comment block in each file
+[] DCT, DCT2, FFT, FFT2, HAAR, HAAR2, WAVELET, WAVELET2; THESE ARE
+DERIVED FROM opOrthogonal.
+[] Redundant wavelet transform: RWavelet, RWavelet2.
+[] Is there anything we can to for printing opBlockDiag(20,opOnes(4,4),2)
+   nicely?
+
+Precedence levels
+1 - Operators that never need brackets, such as opDCT, opPower, opTranspose
+2 - Unary minus
+3 - Multiplication
+4 - Subtraction, addition
+
+DOCUMENTATION
+-------------
+
+[] Note that the random operators depend on old-style calls to
+randn('state'). These are not compatible with the latest stream-based
+calls. Need to document this.
+
+
